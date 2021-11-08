@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="flex justify-center items-center h-screen">
+    <div>
+    <p id="time" class="flex justify-center font-mono text-xl text-white"> Time starts now</p>
+    <button onclick="start()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">START</button>
+    <button onclick="stop()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">STOP</button>
+    </div>
+    <script>
+        var time=0;
+        var clock=0;
+        function start(){
+            var timestart=document.getElementById("time");
+            timestart.innerText= time;
+
+            clock = setInterval(()=>{
+                time++;
+                timestart.innerText=time;
+            }, 1000);
+
+        }
+        function stop(){
+            var timestop=document.getElementById("time");
+            timestop.innerText= time;
+            clearInterval(clock);
+        }
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.halo.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            VANTA.HALO({
+          el: "body",
+          mouseControls: true,
+          touchControls: true,
+          gyroControls: false,
+          minHeight: 200.00,
+          minWidth: 200.00
+        })
+        });
+        
+        </script>
+    
+</body>
+</html>
