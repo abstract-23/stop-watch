@@ -16,20 +16,26 @@
     <script>
         var time=0;
         var clock=0;
+        var isRunning = false;
+
         function start(){
             var timestart=document.getElementById("time");
             timestart.innerText= time;
+
+            if(isRunning) return;
 
             clock = setInterval(()=>{
                 time++;
                 timestart.innerText=time;
             }, 1000);
 
+            isRunning=true;
         }
         function stop(){
             var timestop=document.getElementById("time");
             timestop.innerText= time;
             clearInterval(clock);
+            isRunning=false;
         }
 
     </script>
